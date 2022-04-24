@@ -10,16 +10,13 @@ var Bottles = /** @class */ (function () {
         };
         this.downTo = function (max, min) {
             var numbers = [];
+            for (var n = max; n >= min; n--) {
+                numbers.push(n);
+            }
             return numbers;
         };
     }
     return Bottles;
 }());
-// const ninetyNineBottlesSong = (bottles: number): void => {
-//     // let verse: string;
-//     for (let i = bottles; i > 0; i--) {
-//         console.log(`${i} bottles of beer on the wall,\n ${i} bottles of beer.\n Take one down, pass it around,\n ${i - 1} bottles of beer on the wall`)
-//     }
-// }
 var bottlesSong = new Bottles();
 console.log(bottlesSong.song());
