@@ -49,3 +49,5 @@ class ShamelessGreenBottles {
         }
     }
 }
+
+export default ShamelessGreenBottles;
