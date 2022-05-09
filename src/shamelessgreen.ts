@@ -17,22 +17,13 @@ class ShamelessGreenBottles {
     }
 
     verse = (number: number):string => {
-        switch (number) {
-            case 0:
-                return (
-                    `${this.capitalize(this.quantity(number))} ${this.container(number)} of beer on the wall, ` +
-                    `${this.quantity(number)} ${this.container(number)} of beer.\n` +
-                    `${this.action(number)}` +
-                    `99 bottles of beer on the wall.\n`
-                ); 
-            default:
-                return (
-                    `${this.capitalize(this.quantity(number))} ${this.container(number)} of beer on the wall, ` +
-                    `${this.quantity(number)} ${this.container(number)} of beer.\n` +
-                    `${this.action(number)}` +
-                    `${this.quantity(number - 1)} ${this.container(number - 1)} of beer on the wall.\n`
-                );
-        }
+        return (
+            `${this.capitalize(this.quantity(number))} ${this.container(number)} of beer on the wall, ` +
+            `${this.quantity(number)} ${this.container(number)} of beer.\n` +
+            `${this.action(number)}` +
+            `${this.quantity(this.successor(number))} ${this.container(this.successor(number))} of beer on the wall.\n`
+        );
+
     }
 
     container = (number: number):string => number === 1 ? "bottle" : "bottles";
@@ -46,6 +37,8 @@ class ShamelessGreenBottles {
     action = (number : number) : string => number === 0 ?
         `Go to the store and buy some more, ` :
         `Take ${this.pronoun(number)} down and pass it around, `;
+
+    successor = (number : number) : number => number === 0 ? 99 : number - 1;
 }
 
 export default ShamelessGreenBottles;
