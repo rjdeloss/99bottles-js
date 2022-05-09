@@ -20,24 +20,17 @@ class ShamelessGreenBottles {
         switch (number) {
             case 0:
                 return (
-                    `No more bottles of beer on the wall, ` +
-                    `no more bottles of beer.\n` +
-                    `Go to the store and buy some more, ` +
+                    `${this.capitalize(this.quantity(number))} ${this.container(number)} of beer on the wall, ` +
+                    `${this.quantity(number)} ${this.container(number)} of beer.\n` +
+                    `${this.action(number)}` +
                     `99 bottles of beer on the wall.\n`
                 ); 
-            case 1:
-                return (
-                    `1 bottle of beer on the wall, ` +
-                    `1 bottle of beer.\n` +
-                    `Take ${this.pronoun(number)} down and pass it around, ` +
-                    `no more bottles of beer on the wall.\n`
-                );
             default:
                 return (
-                    `${number} bottles of beer on the wall, ` +
-                    `${number} bottles of beer.\n` +
-                    `Take ${this.pronoun(number)} down and pass it around, ` +
-                    `${number - 1} ${this.container(number - 1)} of beer on the wall.\n`
+                    `${this.capitalize(this.quantity(number))} ${this.container(number)} of beer on the wall, ` +
+                    `${this.quantity(number)} ${this.container(number)} of beer.\n` +
+                    `${this.action(number)}` +
+                    `${this.quantity(number - 1)} ${this.container(number - 1)} of beer on the wall.\n`
                 );
         }
     }
@@ -45,6 +38,14 @@ class ShamelessGreenBottles {
     container = (number: number):string => number === 1 ? "bottle" : "bottles";
 
     pronoun = (number : number ):string => number === 1 ? "it" : "one";
+
+    quantity = (number: number) : string => number === 0 ? "no more" : `${number}`;
+
+    capitalize = (phrase: string) : string => phrase = phrase[0].toUpperCase() + phrase.slice(1);
+
+    action = (number : number) : string => number === 0 ?
+        `Go to the store and buy some more, ` :
+        `Take ${this.pronoun(number)} down and pass it around, `;
 }
 
 export default ShamelessGreenBottles;
